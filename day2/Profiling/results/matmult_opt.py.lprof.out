@@ -1,0 +1,62 @@
+Wrote profile results to matmult_opt.py.lprof
+Timer unit: 1e-06 s
+
+Total time: 0.000755 s
+File: matmult_opt.py
+Function: x_gen at line 7
+
+Line #      Hits         Time  Per Hit   % Time  Line Contents
+==============================================================
+     7                                           @profile
+     8                                           def x_gen(N):
+     9                                               # NxN matrix
+    10         1        754.0    754.0     99.9      X = np.random.randint(0,100,(N,N))
+    11         1          1.0      1.0      0.1      return X
+
+Total time: 0.000743 s
+File: matmult_opt.py
+Function: y_gen at line 13
+
+Line #      Hits         Time  Per Hit   % Time  Line Contents
+==============================================================
+    13                                           @profile
+    14                                           def y_gen(N):
+    15                                               # Nx(N+1) matrix
+    16         1        742.0    742.0     99.9      Y = np.random.randint(0,100,(N,N+1))
+    17         1          1.0      1.0      0.1      return Y
+
+Total time: 5.5e-05 s
+File: matmult_opt.py
+Function: result_gen at line 19
+
+Line #      Hits         Time  Per Hit   % Time  Line Contents
+==============================================================
+    19                                           @profile
+    20                                           def result_gen(N):
+    21                                               # result is Nx(N+1)
+    22         1         54.0     54.0     98.2      result = np.zeros((N,N+1))
+    23         1          1.0      1.0      1.8      return result
+
+Total time: 0.017135 s
+File: matmult_opt.py
+Function: multipl at line 25
+
+Line #      Hits         Time  Per Hit   % Time  Line Contents
+==============================================================
+    25                                           @profile
+    26                                           def multipl(X,Y,result):
+    27                                           
+    28         1      17135.0  17135.0    100.0      result=  np.matmul(X,Y)
+    29         1          0.0      0.0      0.0      return result 
+
+Total time: 0.388298 s
+File: matmult_opt.py
+Function: printing at line 31
+
+Line #      Hits         Time  Per Hit   % Time  Line Contents
+==============================================================
+    31                                           @profile
+    32                                           def printing(result):
+    33       251        303.0      1.2      0.1      for r in result:
+    34       250     387995.0   1552.0     99.9          print(r)
+

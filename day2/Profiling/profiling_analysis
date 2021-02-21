@@ -1,0 +1,42 @@
+
+>>>  a. Investigate the performance of the matmult.py script
+In which line(s) of the script would you start optimizing for speed? Which line(s) create the most memory?
+
+Answer
+======
+
+According to the results/matmult.py.lprof.out the lines:
+42  k in range(len(Y)):
+43      result[i][j] += X[i][k] * Y[k][j]
+take the most time (Respectively : 3.6 and 6.4 s) so they should be optimized for speed.
+
+According to the results/matmult.py.mprof.out the line:
+43      result[i][j] += X[i][k] * Y[k][j]
+take the most memory (1.844 MiB).
+
+
+>>>  b. Investigate the performance of the euler72.py script
+In which line(s) of the script would you start optimizing for speed? Which line(s) create the most memory? (This is one problem from the euler project: https://projecteuler.net/problem=72)
+
+Answer
+======
+
+According to the file results/euler72.py.lprof.out the line:
+52    factors = factorize(n,primes)
+takes the most computing time (0.27 s).
+
+According to the file results/euler72.py.mprof.out the line:
+52    factors = factorize(n,primes)
+takes the most memory (389570.414 MiB).
+
+
+>>>  c. Improve the performance of the matmult.py script
+What is the best performance that you achieved with N=250?
+
+Answer
+======
+
+The best performance of the module matmult_opt.py that I achived is: 0.968 seconds.
+
+While the original module matmult.py takes: 2.665 seconds.
+

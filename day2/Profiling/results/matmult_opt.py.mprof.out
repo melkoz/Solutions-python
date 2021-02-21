@@ -1,0 +1,54 @@
+Filename: matmult_opt.py
+
+Line #    Mem usage    Increment  Occurences   Line Contents
+============================================================
+     7   63.836 MiB   63.836 MiB           1   @profile
+     8                                         def x_gen(N):
+     9                                             # NxN matrix
+    10   64.445 MiB    0.609 MiB           1       X = np.random.randint(0,100,(N,N))
+    11   64.445 MiB    0.000 MiB           1       return X
+
+
+Filename: matmult_opt.py
+
+Line #    Mem usage    Increment  Occurences   Line Contents
+============================================================
+    13   64.445 MiB   64.445 MiB           1   @profile
+    14                                         def y_gen(N):
+    15                                             # Nx(N+1) matrix
+    16   64.957 MiB    0.512 MiB           1       Y = np.random.randint(0,100,(N,N+1))
+    17   64.957 MiB    0.000 MiB           1       return Y
+
+
+Filename: matmult_opt.py
+
+Line #    Mem usage    Increment  Occurences   Line Contents
+============================================================
+    19   64.957 MiB   64.957 MiB           1   @profile
+    20                                         def result_gen(N):
+    21                                             # result is Nx(N+1)
+    22   65.215 MiB    0.258 MiB           1       result = np.zeros((N,N+1))
+    23   65.215 MiB    0.000 MiB           1       return result
+
+
+Filename: matmult_opt.py
+
+Line #    Mem usage    Increment  Occurences   Line Contents
+============================================================
+    25   65.215 MiB   65.215 MiB           1   @profile
+    26                                         def multipl(X,Y,result):
+    27                                         
+    28   65.730 MiB    0.516 MiB           1       result=  np.matmul(X,Y)
+    29   65.730 MiB    0.000 MiB           1       return result 
+
+
+Filename: matmult_opt.py
+
+Line #    Mem usage    Increment  Occurences   Line Contents
+============================================================
+    31   65.730 MiB   65.730 MiB           1   @profile
+    32                                         def printing(result):
+    33   65.730 MiB    0.000 MiB         251       for r in result:
+    34   65.730 MiB    0.000 MiB         250           print(r)
+
+

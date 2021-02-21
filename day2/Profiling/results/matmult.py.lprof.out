@@ -1,0 +1,76 @@
+Wrote profile results to matmult.py.lprof
+Timer unit: 1e-06 s
+
+Total time: 0.204233 s
+File: matmult.py
+Function: x_gen at line 7
+
+Line #      Hits         Time  Per Hit   % Time  Line Contents
+==============================================================
+     7                                           @profile
+     8                                           def x_gen(N):
+     9                                               # NxN matrix
+    10         1          1.0      1.0      0.0      X = []
+    11       251         83.0      0.3      0.0      for i in range(N):
+    12       250     204148.0    816.6    100.0          X.append([random.randint(0,100) for r in range(N)])
+    13                                               
+    14         1          1.0      1.0      0.0      return X
+
+Total time: 0.208618 s
+File: matmult.py
+Function: y_gen at line 16
+
+Line #      Hits         Time  Per Hit   % Time  Line Contents
+==============================================================
+    16                                           @profile
+    17                                           def y_gen(N):
+    18                                               # Nx(N+1) matrix
+    19         1          0.0      0.0      0.0      Y = []
+    20       251        124.0      0.5      0.1      for i in range(N):
+    21       250     208493.0    834.0     99.9          Y.append([random.randint(0,100) for r in range(N+1)])
+    22                                               
+    23         1          1.0      1.0      0.0      return Y
+
+Total time: 0.000295 s
+File: matmult.py
+Function: result_gen at line 25
+
+Line #      Hits         Time  Per Hit   % Time  Line Contents
+==============================================================
+    25                                           @profile
+    26                                           def result_gen(N):
+    27                                               # result is Nx(N+1)
+    28         1          0.0      0.0      0.0      result = []
+    29       251         59.0      0.2     20.0      for i in range(N):
+    30       250        235.0      0.9     79.7          result.append([0] * (N+1))
+    31                                               
+    32         1          1.0      1.0      0.3      return result
+
+Total time: 10.0417 s
+File: matmult.py
+Function: iterating at line 35
+
+Line #      Hits         Time  Per Hit   % Time  Line Contents
+==============================================================
+    35                                           @profile
+    36                                           def iterating(X,Y,result):
+    37                                               # iterate through rows of X
+    38       251         62.0      0.2      0.0      for i in range(len(X)):
+    39                                                   # iterate through columns of Y
+    40     63000      14607.0      0.2      0.1          for j in range(len(Y[0])):
+    41                                                       # iterate through rows of Y
+    42  15750250    3641131.0      0.2     36.3              for k in range(len(Y)):
+    43  15687500    6385865.0      0.4     63.6                  result[i][j] += X[i][k] * Y[k][j]
+    44         1          1.0      1.0      0.0      return result
+
+Total time: 0.004117 s
+File: matmult.py
+Function: printing at line 46
+
+Line #      Hits         Time  Per Hit   % Time  Line Contents
+==============================================================
+    46                                           @profile
+    47                                           def printing(result):
+    48       251         61.0      0.2      1.5      for r in result:
+    49       250       4056.0     16.2     98.5          print(r)
+

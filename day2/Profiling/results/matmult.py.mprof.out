@@ -1,0 +1,68 @@
+Filename: matmult.py
+
+Line #    Mem usage    Increment  Occurences   Line Contents
+============================================================
+     7   38.734 MiB   38.734 MiB           1   @profile
+     8                                         def x_gen(N):
+     9                                             # NxN matrix
+    10   38.734 MiB    0.000 MiB           1       X = []
+    11   39.184 MiB    0.000 MiB         251       for i in range(N):
+    12   39.184 MiB    0.449 MiB       63250           X.append([random.randint(0,100) for r in range(N)])
+    13                                             
+    14   39.184 MiB    0.000 MiB           1       return X
+
+
+Filename: matmult.py
+
+Line #    Mem usage    Increment  Occurences   Line Contents
+============================================================
+    16   39.184 MiB   39.184 MiB           1   @profile
+    17                                         def y_gen(N):
+    18                                             # Nx(N+1) matrix
+    19   39.184 MiB    0.000 MiB           1       Y = []
+    20   39.695 MiB    0.000 MiB         251       for i in range(N):
+    21   39.695 MiB    0.512 MiB       63500           Y.append([random.randint(0,100) for r in range(N+1)])
+    22                                             
+    23   39.695 MiB    0.000 MiB           1       return Y
+
+
+Filename: matmult.py
+
+Line #    Mem usage    Increment  Occurences   Line Contents
+============================================================
+    25   39.695 MiB   39.695 MiB           1   @profile
+    26                                         def result_gen(N):
+    27                                             # result is Nx(N+1)
+    28   39.695 MiB    0.000 MiB           1       result = []
+    29   40.211 MiB    0.000 MiB         251       for i in range(N):
+    30   40.211 MiB    0.516 MiB         250           result.append([0] * (N+1))
+    31                                             
+    32   40.211 MiB    0.000 MiB           1       return result
+
+
+Filename: matmult.py
+
+Line #    Mem usage    Increment  Occurences   Line Contents
+============================================================
+    35   40.211 MiB   40.211 MiB           1   @profile
+    36                                         def iterating(X,Y,result):
+    37                                             # iterate through rows of X
+    38   42.055 MiB    0.000 MiB         251       for i in range(len(X)):
+    39                                                 # iterate through columns of Y
+    40   42.055 MiB    0.000 MiB       63000           for j in range(len(Y[0])):
+    41                                                     # iterate through rows of Y
+    42   42.055 MiB    0.000 MiB    15750250               for k in range(len(Y)):
+    43   42.055 MiB    1.844 MiB    15687500                   result[i][j] += X[i][k] * Y[k][j]
+    44   42.055 MiB    0.000 MiB           1       return result
+
+
+Filename: matmult.py
+
+Line #    Mem usage    Increment  Occurences   Line Contents
+============================================================
+    46   42.055 MiB   42.055 MiB           1   @profile
+    47                                         def printing(result):
+    48   42.055 MiB    0.000 MiB         251       for r in result:
+    49   42.055 MiB    0.000 MiB         250           print(r)
+
+

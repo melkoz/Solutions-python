@@ -1,0 +1,43 @@
+1. Speed optimization using Cython
+
+>>> b. Take a look at the example rbf.py1 which uses Gaussian Radial Basis Functions (RBFs) as an approximation scheme for some given data.
+
+How much speed up do you gain by using existing Python packages like Scipy? (Feel free to use your knowledge about performance testing and improve the current way of timing the different implementations)
+
+Answer
+======
+
+The rbf_scipy is about 200 times faster than rbf_network.
+
+Python:  16.31727170944214
+Scipy:  0.08623957633972168
+
+
+>>> c. In the above example, why is Scipy faster than the naive Python implementation?
+Which part of the Python code is slowing things down? (Again, use the profiling skills you learned earlier)
+
+Answer
+=====
+
+According to the rbf.py.lprof.out, the lines:
+    16      for d in range(D):
+    17          r += (X[j, d] - X[i, d]) ** 2
+    19      Y[i] += beta[j] * exp(-(r * theta)**2)
+take the most time in the rbf_network function.
+This function is slow because there are three nested loops that take a lot of time to compute.
+Hence, the rbf_scipy is faster because it avoids loops and the function Rbf() is probably well optimized for speed using lower level programming language.
+
+
+>>> d. How much can you improve the performance of rbf.py using Cython?
+
+
+Answer
+======
+
+I reach the following performances:
+
+Python:  16.31727170944214
+Scipy:  0.08623957633972168
+Cython:  0.13468694686889648
+
+Which indicates that Cython improves very much the performance in comparison to using Python implementation but it does not reach the performance of Scipy package.
